@@ -12,7 +12,7 @@
         <label for="form_check">Guess the painter </label>
         <input type="text" id="check" name="form_check" min=10 max=50 step=2> <br>
 
-        <input type="button"  id="btn"   onclick="checkPainter()" value="Check the guess">
+        <input type="button" id="btn" onclick="checkPainter()" value="Check the guess">
         <p id="result">Result</p>
     </form>
     <br>
@@ -23,7 +23,27 @@
         var good = 0
         var oops = 0
         var useImage = 1
-        function selectImage() {
+        function checkPainter() {
+            console.log("Getting form values")
+            password = document.getElementById("password").value
+            check = document.getElementById("check").value
+            confirmed = confirm("Are these the values? " + password + " and " + check)
+            out = document.getElementById("result")
+            if (password == check) {
+                alert("You got it right")
+                good = good + 1
+                out.innerHTML = "Right count:" + good + "Wrong count:" + oops;
+            }
+            else if (oops >= 10) {
+                document.getElementById("btn").onclick = giveAlert();
+                out.innerHTML = "Right count:" + good + "Wrong count:" + oops;
+            }
+            else {
+                oops = oops + 1
+                alert("Sorry")
+                out.innerHTML = "Right count:" + good + "Wrong count:" + oops;
+            }
+        }        function selectImage() {
             switch (useImage) {
                 case 1: useImage = useImage + 1
                     image.src = "Galium.jpg";
@@ -37,29 +57,7 @@
             }
         }
 
-        function checkPainter() {
-            console.log("Getting form values")
-            password = document.getElementById("password").value
-            check = document.getElementById("check").value
-            confirmed = confirm("Are these the values? " + password + " and " + check)
 
-            out = document.getElementById("result")
-            if (password == check) {
-                alert("You got it right")
-                good = good + 1
-                out.innerHTML = "Right count:" + good + "Wrong count:" + oops;
-            }
-            else if(oops>=10){
-                document.getElementById("btn").onclick=giveAlert();
-                out.innerHTML = "Right count:" + good + "Wrong count:" + oops;
-            }
-            else {
-                oops = oops + 1
-                alert("Sorry")
-             out.innerHTML = "Right count:" + good + "Wrong count:" + oops;
-        }
-    }
-        
 
     </script>
 
