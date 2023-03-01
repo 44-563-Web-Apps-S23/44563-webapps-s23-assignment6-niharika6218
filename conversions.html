@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Webapps Conversions</title>
+</head>
+
+<body>
+
+    <h2>Niharika Gangineni shows currency conversions</h2>
+    <form>
+        <label for="form1_base">Enter base amount</label>
+        <input type="number" id="form1_base" name="form1_base" value=50> <br>
+
+        <label for="form1_conversion">Enter the conversion rate</label>
+        <input type="number" id="form1_conversion" name="form1_conversion" value=35> <br>
+
+        <input type="button" onclick="convert()" value="Show conversions">
+    </form>
+    <p id="result">This text will be replaced </p>
+
+    <script>
+        function convert() {
+            base = document.getElementById("form1_base").value;
+            value = document.getElementById("form1_conversion").value;
+            toShow = "";
+            out = document.getElementById("result")
+
+            for (let i = 0; i < 5; i++) {
+
+                let conversion = base * value;
+                toShow = toShow + " " + base + " is " + conversion.toFixed(1) + ";";
+                base = base * 2
+            }
+            document.getElementById("result").innerHTML = "Conversions are:" + toShow;
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
