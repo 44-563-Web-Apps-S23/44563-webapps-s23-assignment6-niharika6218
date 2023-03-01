@@ -18,6 +18,17 @@
         <input type="button" onclick="convert()" value="Show conversions">
     </form>
     <p id="result">This text will be replaced </p>
+    <form>
+        <input type="radio" id="average" name="calculations" onclick="chooseOp()" value="mean"  checked >
+        <label for="average">average</label></br>
+      
+        <input type="radio" id="max" name="calculations" onclick="chooseOp()" value="maximum">
+        <label for="min">max</label></br>
+      
+        <input type="radio" id="min" name="calculations" onclick="chooseOp()" value="minimum">
+        <label for="min">min</label></br>
+      </form>
+      <p id="result2">This text will be replaced </p>
 
     <script>
         function convert() {
@@ -34,8 +45,26 @@
             }
             document.getElementById("result").innerHTML = "Conversions are:" + toShow;
         }
-
-
+       
+        function chooseOp(){
+    let results = 0;
+            let base = document.getElementById("form1_base").value;
+            let conversion = document.getElementById("form1_conversion").value;
+            let average = document.getElementById("average").checked;
+            let max = document.getElementById("max").checked;
+            let min = document.getElementById("min").checked;
+            if (average) {
+                results = (parseInt(base)+parseInt(conversion))/2;
+            }
+            else if (max) {
+                results = Math.max(base,conversion);
+            }
+            else if (min) {
+                results = Math.min(base,conversion);
+            }
+            document.getElementById("result2").innerHTML = results
+}
+        
 
     </script>
 
